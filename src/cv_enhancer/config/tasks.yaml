@@ -1,0 +1,63 @@
+
+
+analyze_cv_task:
+  description: >
+    Carefully review the user's actual CV content provided in {parsed_cv}. For each section (Summary, Skills, Experience, Education, etc.):
+    - Quote the actual text from the CV.
+    - State if the section is strong, weak, or missing.
+    - Give a specific suggestion for improvement, referencing the user's real data.
+    - For every suggestion, show the original and the improved version.
+  expected_output: >
+    For each section:
+      - Section Name: [quote from CV]
+      - Status: [Strong/Weak/Missing]
+      - Suggestion: [specific, referencing the quoted text]
+      - Improved Version: [if applicable]
+  agent: analyzer
+
+
+rewrite_cv_task:
+  description: >
+    Using the analysis, rewrite only the weak or missing sections of the user's real CV from {parsed_cv}. For each section you rewrite:
+    - Quote the original text from the CV.
+    - Provide a short, improved version.
+    - Explain briefly why the change is needed.
+    Do not rewrite strong sections; just state they are strong and show the original.
+  expected_output: >
+    For each rewritten section:
+      - Section Name: [quote from CV]
+      - Improved Version: [short, clear, improved text]
+      - Reason for Change: [brief explanation]
+    For strong sections:
+      - Section Name: [quote from CV]
+      - Status: Strong, no change needed.
+  agent: content_writer
+
+
+ats_optimize_task:
+  description: >
+    Review the user's actual CV content from {parsed_cv} and provide specific, actionable suggestions to improve ATS (Applicant Tracking System) compatibility. For each suggestion:
+    - Quote the relevant part of the CV.
+    - Explain what to change and why, referencing the user's real data.
+    - Suggest improved keywords or formatting, showing before and after if possible.
+  expected_output: >
+    For each ATS suggestion:
+      - Quoted CV Text: [from parsed_cv]
+      - Issue: [what's wrong for ATS]
+      - Suggested Change: [improved version or keyword]
+      - Reason: [why this helps ATS]
+  agent: ats_optimizer
+
+
+industry_advice_task:
+  description: >
+    Using the user's actual CV content from {parsed_cv} and the target industry, provide industry-specific advice. For each tip:
+    - Quote or reference the relevant part of the user's CV.
+    - Explain what to add, remove, or emphasize for the chosen sector.
+    - Make sure all advice is based on the user's real experience and skills, not generic.
+  expected_output: >
+    For each tip:
+      - Quoted CV Text: [from parsed_cv]
+      - Industry Advice: [specific, actionable, and tailored]
+      - Reason: [why this helps for the target industry]
+  agent: industry_expert
