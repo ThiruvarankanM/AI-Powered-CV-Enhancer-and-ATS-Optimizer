@@ -9,6 +9,7 @@ Professional CV enhancement tool powered by CrewAI that delivers specific, actio
 - **ATS Optimization**: Industry-specific keyword recommendations
 - **Format Support**: PDF, DOCX file processing
 - **Dual Interface**: Web app and command-line access
+- **Fast & Free**: Powered by GROQ AI (Llama 3.1) - lightning fast responses
 
 ## 🚀 Quick Setup
 
@@ -38,11 +39,6 @@ streamlit run app.py
 python src/cv_enhancer/main.py resume.pdf "job description" technology
 ```
 
-**Quick Test:**
-```bash
-python test_cv.py
-```
-
 ## 📋 Sample Output
 ```
 ANALYSIS:
@@ -59,9 +55,8 @@ ENHANCEMENTS:
 
 ## 📁 Architecture
 ```
-AI-CV-Enhancer/           # 241 lines total, 9 files
+AI-CV-Enhancer/           # Ultra-minimal, 8 files only
 ├── app.py                # Streamlit web interface
-├── test_cv.py            # Validation script
 ├── requirements.txt      # Dependencies (5 packages)
 └── src/cv_enhancer/
     ├── crew.py           # 2-agent AI crew
