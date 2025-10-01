@@ -1,4 +1,5 @@
 streamlit
+crewai
 pdfplumber
 python-docx
-crewai
+python-dotenv
