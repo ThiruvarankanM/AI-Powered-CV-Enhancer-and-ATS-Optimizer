@@ -45,7 +45,7 @@ if uploaded_file:
                 
         except Exception as e:
             st.error(f"Error: {e}")
-            st.info("Check your .env file has OPENAI_API_KEY")
+            st.info("Check your .env file has GROQ_API_KEY")
         
         finally:
             os.unlink(cv_path) if os.path.exists(cv_path) else None

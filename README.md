@@ -1,65 +1,81 @@
 
-# AI CV Enhancer
+# AI CV Enhancer & ATS Optimizer
 
-Minimal CV enhancement tool using CrewAI that provides specific, actionable feedback based on actual CV content.
+Professional CV enhancement tool powered by CrewAI that delivers specific, actionable feedback based on your actual CV content.
 
-## Features
-- Analyzes actual CV content (not generic advice)
-- Identifies which projects should be prioritized
-- Provides quantified improvements
-- ATS optimization with specific keywords
-- Supports PDF, DOCX files
+## 🎯 Core Features
+- **Content Analysis**: Identifies strengths, weaknesses, and project prioritization
+- **Specific Feedback**: "This React project should be listed first" - not generic advice  
+- **ATS Optimization**: Industry-specific keyword recommendations
+- **Format Support**: PDF, DOCX file processing
+- **Dual Interface**: Web app and command-line access
 
-## Quick Start
+## 🚀 Quick Setup
 
-1. **Setup:**
 ```bash
 git clone https://github.com/ThiruvarankanM/AI-Powered-CV-Enhancer-and-ATS-Optimizer.git
 cd AI-Powered-CV-Enhancer-and-ATS-Optimizer
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. **Configure:**
-Create `.env` file:
-```
-OPENAI_API_KEY=your_key_here
+Create `.env` file with your [free GROQ API key](https://console.groq.com):
+```env
+MODEL=groq/llama-3.1-8b-instant
+GROQ_API_KEY=your_groq_api_key_here
+CREWAI_TRACING_ENABLED=true
 ```
 
-3. **Test:**
+## 🔧 Usage
+
+**Web Interface:**
+```bash
+streamlit run app.py
+```
+
+**Command Line:**
+```bash
+python src/cv_enhancer/main.py resume.pdf "job description" technology
+```
+
+**Quick Test:**
 ```bash
 python test_cv.py
 ```
 
-4. **Run:**
-```bash
-# Web interface
-streamlit run app.py
+## 📋 Sample Output
+```
+ANALYSIS:
+- Strengths: "React.js e-commerce project with 40% performance improvement"
+- Priority Project: "E-commerce Platform should be listed first - shows full-stack skills"
+- Improvements: Add metrics to "improved system efficiency"
+- Missing Keywords: microservices, CI/CD, agile
 
-# Command line
-python src/cv_enhancer/main.py your_cv.pdf "job description" technology
+ENHANCEMENTS:
+- Project Reordering: [E-commerce Platform, Mobile App, API Development]
+- Experience: "Led development team" → "Led team of 5 developers, reduced deployment time by 60%"
+- Skills: Add Docker, Kubernetes for technology industry
 ```
 
-## Expected Output
-- **Strengths:** Specific achievements quoted from CV
-- **Priority Project:** Which project should be listed first and why  
-- **Improvements:** Original → Enhanced versions with metrics
-- **Keywords:** Missing ATS terms for target industry
-
-## Structure (9 files only!)
+## 📁 Architecture
 ```
-├── app.py              # Streamlit interface
-├── test_cv.py          # Quick test  
-├── requirements.txt    # Dependencies
+AI-CV-Enhancer/           # 241 lines total, 9 files
+├── app.py                # Streamlit web interface
+├── test_cv.py            # Validation script
+├── requirements.txt      # Dependencies (5 packages)
 └── src/cv_enhancer/
-    ├── crew.py         # 2-agent crew
-    ├── main.py         # CLI
+    ├── crew.py           # 2-agent AI crew
+    ├── main.py           # CLI interface
     ├── config/
-    │   ├── agents.yaml # Agent configs
-    │   └── tasks.yaml  # Task configs
+    │   ├── agents.yaml   # CV Analyst & Writer agents
+    │   └── tasks.yaml    # Analysis & enhancement tasks
     └── tools/
-        └── custom_tool.py # CV parser
+        └── custom_tool.py # PDF/DOCX parser
 ```
 
-Perfect for getting specific CV improvements like "This React project should be listed first because..."
+## 🤖 AI Agents
+- **CV Analyst**: Identifies strengths, project priorities, improvement areas
+- **CV Writer**: Transforms weak sections into quantified achievements
+
+---
+**Built by Thiruvarankan M** • Minimal code, maximum impact
